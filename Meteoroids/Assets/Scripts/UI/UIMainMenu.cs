@@ -16,8 +16,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject _howToPlayWindow;
     [SerializeField] private Button _howToPlayExitButton;
 
-    [Header("Options")]
-    [SerializeField] private GameObject _optionsWindow;
+    private UIOptionsController _optionsController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,10 +34,10 @@ public class UIMainMenu : MonoBehaviour
 
     private void InitOptionsController()
     {
-        UIOptionsController optionsController = GetComponentInChildren<UIOptionsController>(true);
+        _optionsController = GetComponentInChildren<UIOptionsController>(true);
 
-        if (optionsController != null)
-            optionsController.OnWindowClosed += HandleOptionsWindowClosed;
+        if (_optionsController != null)
+            _optionsController.OnWindowClosed += HandleOptionsWindowClosed;
         else
             Debug.LogWarning($"{nameof(UIOptionsController)} not found in {nameof(gameObject.name)}'s children");
     }
@@ -80,8 +79,8 @@ public class UIMainMenu : MonoBehaviour
     }
     private void OpenOptionsWindow()
     {
-        _optionsWindow.SetActive(true);
         _mainButtonsWindow.SetActive(false);
+        _optionsController.ShowOptionsWindow();
     }
     private void QuitGame()
     {

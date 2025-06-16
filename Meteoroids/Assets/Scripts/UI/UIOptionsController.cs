@@ -6,6 +6,7 @@ public class UIOptionsController : MonoBehaviour
 {
     public event EventHandler OnWindowClosed;
 
+    [SerializeField] private GameObject _optionsWindow;
     [SerializeField] private Slider _BGMSlider;
     [SerializeField] private Slider _SFXSlider;
     [SerializeField] private Button _exitButton;
@@ -16,8 +17,10 @@ public class UIOptionsController : MonoBehaviour
         InitSliders();
         _exitButton.onClick.AddListener(() => CloseOptionsWindow());
 
-        gameObject.SetActive(false);
+        _optionsWindow.SetActive(false);
     }
+
+    public void ShowOptionsWindow() => _optionsWindow.SetActive(true);
 
     private void InitSliders()
     {
@@ -35,8 +38,8 @@ public class UIOptionsController : MonoBehaviour
     }
     private void CloseOptionsWindow()
     {
+        _optionsWindow.SetActive(false);
         OnWindowClosed?.Invoke(this, EventArgs.Empty);
-        gameObject.SetActive(false);
     }
 
     private void OnDestroy()
