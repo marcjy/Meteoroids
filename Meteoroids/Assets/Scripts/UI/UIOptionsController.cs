@@ -6,32 +6,32 @@ public class UIOptionsController : MonoBehaviour
 {
     public event EventHandler OnWindowClosed;
 
-    public Slider BGMSlider;
-    public Slider SFXSlider;
-    public Button ExitButton;
+    [SerializeField] private Slider _BGMSlider;
+    [SerializeField] private Slider _SFXSlider;
+    [SerializeField] private Button _exitButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         InitSliders();
-        ExitButton.onClick.AddListener(() => CloseOptionsWindow());
+        _exitButton.onClick.AddListener(() => CloseOptionsWindow());
 
         gameObject.SetActive(false);
     }
 
     private void InitSliders()
     {
-        BGMSlider.maxValue = AudioManager.MAX_VOLUME;
-        BGMSlider.minValue = AudioManager.MIN_VOLUME;
+        _BGMSlider.maxValue = AudioManager.MAX_VOLUME;
+        _BGMSlider.minValue = AudioManager.MIN_VOLUME;
 
-        SFXSlider.maxValue = AudioManager.MAX_VOLUME;
-        SFXSlider.minValue = AudioManager.MIN_VOLUME;
+        _SFXSlider.maxValue = AudioManager.MAX_VOLUME;
+        _SFXSlider.minValue = AudioManager.MIN_VOLUME;
 
-        BGMSlider.value = AudioManager.GetVolume(AudioManager.AudioChannel.BGM);
-        SFXSlider.value = AudioManager.GetVolume(AudioManager.AudioChannel.SFX);
+        _BGMSlider.value = AudioManager.GetVolume(AudioManager.AudioChannel.BGM);
+        _SFXSlider.value = AudioManager.GetVolume(AudioManager.AudioChannel.SFX);
 
-        BGMSlider.onValueChanged.AddListener((value) => AudioManager.SetVolume(AudioManager.AudioChannel.BGM, value));
-        SFXSlider.onValueChanged.AddListener((value) => AudioManager.SetVolume(AudioManager.AudioChannel.SFX, value));
+        _BGMSlider.onValueChanged.AddListener((value) => AudioManager.SetVolume(AudioManager.AudioChannel.BGM, value));
+        _SFXSlider.onValueChanged.AddListener((value) => AudioManager.SetVolume(AudioManager.AudioChannel.SFX, value));
     }
     private void CloseOptionsWindow()
     {
@@ -42,12 +42,12 @@ public class UIOptionsController : MonoBehaviour
     private void OnDestroy()
     {
         UnSubSliders();
-        ExitButton.onClick.RemoveAllListeners();
+        _exitButton.onClick.RemoveAllListeners();
     }
     private void UnSubSliders()
     {
-        BGMSlider.onValueChanged.RemoveAllListeners();
-        SFXSlider.onValueChanged.RemoveAllListeners();
+        _BGMSlider.onValueChanged.RemoveAllListeners();
+        _SFXSlider.onValueChanged.RemoveAllListeners();
     }
 
 }

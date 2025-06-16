@@ -5,19 +5,19 @@ using UnityEngine.UI;
 public class UIMainMenu : MonoBehaviour
 {
     [Header("Main Buttons")]
-    public GameObject MainButtonsWindow;
-    public Button StartGameButton;
-    public string GameSceneName;
-    public Button HowToPlayButton;
-    public Button OptionsButton;
-    public Button QuitButton;
+    [SerializeField] private GameObject _mainButtonsWindow;
+    [SerializeField] private Button _startGameButton;
+    [SerializeField] private string _gameSceneName;
+    [SerializeField] private Button _howToPlayButton;
+    [SerializeField] private Button _optionsButton;
+    [SerializeField] private Button _quitButton;
 
     [Header("HowToPlay")]
-    public GameObject HowToPlayWindow;
-    public Button HowToPlayExitButton;
+    [SerializeField] private GameObject _howToPlayWindow;
+    [SerializeField] private Button _howToPlayExitButton;
 
     [Header("Options")]
-    public GameObject OptionsWindow;
+    [SerializeField] private GameObject _optionsWindow;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +35,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void InitOptionsController()
     {
-        UIOptionsController optionsController = GetComponentInChildren<UIOptionsController>();
+        UIOptionsController optionsController = GetComponentInChildren<UIOptionsController>(true);
 
         if (optionsController != null)
             optionsController.OnWindowClosed += HandleOptionsWindowClosed;
@@ -44,44 +44,44 @@ public class UIMainMenu : MonoBehaviour
     }
 
     #region Event Handling
-    private void HandleOptionsWindowClosed(object sender, System.EventArgs e) => MainButtonsWindow.SetActive(true);
+    private void HandleOptionsWindowClosed(object sender, System.EventArgs e) => _mainButtonsWindow.SetActive(true);
     #endregion
 
     #region Main Buttons
     private void InitMainButtons()
     {
-        StartGameButton.onClick.AddListener(StartGame);
-        HowToPlayButton.onClick.AddListener(OpenHowToPlayWindow);
-        OptionsButton.onClick.AddListener(OpenOptionsWindow);
-        QuitButton.onClick.AddListener(QuitGame);
+        _startGameButton.onClick.AddListener(StartGame);
+        _howToPlayButton.onClick.AddListener(OpenHowToPlayWindow);
+        _optionsButton.onClick.AddListener(OpenOptionsWindow);
+        _quitButton.onClick.AddListener(QuitGame);
     }
     private void UnSubMainButtons()
     {
-        StartGameButton.onClick.RemoveListener(StartGame);
-        HowToPlayButton.onClick.RemoveListener(OpenHowToPlayWindow);
-        OptionsButton.onClick.RemoveListener(OpenOptionsWindow);
-        QuitButton.onClick.RemoveListener(QuitGame);
+        _startGameButton.onClick.RemoveListener(StartGame);
+        _howToPlayButton.onClick.RemoveListener(OpenHowToPlayWindow);
+        _optionsButton.onClick.RemoveListener(OpenOptionsWindow);
+        _quitButton.onClick.RemoveListener(QuitGame);
     }
 
     private void StartGame()
     {
-        if (string.IsNullOrEmpty(GameSceneName))
+        if (string.IsNullOrEmpty(_gameSceneName))
         {
-            Debug.LogError($"{nameof(GameSceneName)} is not set");
+            Debug.LogError($"{nameof(_gameSceneName)} is not set");
             return;
         }
 
-        SceneManager.LoadScene(GameSceneName, LoadSceneMode.Single);
+        SceneManager.LoadScene(_gameSceneName, LoadSceneMode.Single);
     }
     private void OpenHowToPlayWindow()
     {
-        HowToPlayWindow.SetActive(true);
-        MainButtonsWindow.SetActive(false);
+        _howToPlayWindow.SetActive(true);
+        _mainButtonsWindow.SetActive(false);
     }
     private void OpenOptionsWindow()
     {
-        OptionsWindow.SetActive(true);
-        MainButtonsWindow.SetActive(false);
+        _optionsWindow.SetActive(true);
+        _mainButtonsWindow.SetActive(false);
     }
     private void QuitGame()
     {
@@ -96,15 +96,15 @@ public class UIMainMenu : MonoBehaviour
     #region HowToPlay
     private void InitHowToPlay()
     {
-        HowToPlayWindow.SetActive(false);
-        HowToPlayExitButton.onClick.AddListener(CloseHowToPlayWindow);
+        _howToPlayWindow.SetActive(false);
+        _howToPlayExitButton.onClick.AddListener(CloseHowToPlayWindow);
     }
-    private void UnSubHowToPlayButtons() => HowToPlayExitButton.onClick.RemoveListener(CloseHowToPlayWindow);
+    private void UnSubHowToPlayButtons() => _howToPlayExitButton.onClick.RemoveListener(CloseHowToPlayWindow);
 
     private void CloseHowToPlayWindow()
     {
-        HowToPlayWindow.SetActive(false);
-        MainButtonsWindow.SetActive(true);
+        _howToPlayWindow.SetActive(false);
+        _mainButtonsWindow.SetActive(true);
     }
     #endregion
 
