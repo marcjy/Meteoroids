@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance;
 
     public event EventHandler<float> OnPlayerRotates;
-    public event EventHandler OnPlayerThrusts;
+    public event EventHandler<bool> OnPlayerThrusts;
     public event EventHandler OnPlayerShoots;
     public event EventHandler OnPlayerTeleports;
     public event EventHandler OnPlayerUsesPowerUp;
@@ -49,13 +49,25 @@ public class InputManager : MonoBehaviour
     }
 
     #region RotateAction
-    private void InitRotateAction() => _rotate.action.performed += RotatePerformed;
+    private void InitRotateAction()
+    {
+        _rotate.action.performed += RotatePerformed;
+        _rotate.action.canceled += RotateCanceled;
+    }
+
     private void RotatePerformed(InputAction.CallbackContext obj) => OnPlayerRotates?.Invoke(this, obj.ReadValue<float>());
+    private void RotateCanceled(InputAction.CallbackContext obj) => OnPlayerRotates?.Invoke(this, 0.0f);
+
     #endregion
 
     #region ThrustAction
-    private void InitThrustAction() => _thrust.action.performed += ThrustPerformed;
-    private void ThrustPerformed(InputAction.CallbackContext obj) => OnPlayerThrusts?.Invoke(this, EventArgs.Empty);
+    private void InitThrustAction()
+    {
+        _thrust.action.performed += ThrustPerformed;
+        _thrust.action.canceled += ThrustCanceled;
+    }
+    private void ThrustPerformed(InputAction.CallbackContext obj) => OnPlayerThrusts?.Invoke(this, true);
+    private void ThrustCanceled(InputAction.CallbackContext obj) => OnPlayerThrusts?.Invoke(this, false);
     #endregion
 
     #region ShootAction
