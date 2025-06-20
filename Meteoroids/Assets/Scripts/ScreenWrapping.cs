@@ -8,27 +8,12 @@ public class ScreenWrapping : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        CalculateLimits();
+        _bounds = ScreenBoundsData.GetScreenBounds();
     }
 
     void FixedUpdate()
     {
         CheckBounds();
-    }
-
-    private void CalculateLimits()
-    {
-        Camera mainCamera = Camera.main;
-        float cameraHeight = mainCamera.orthographicSize * 2.0f;
-        float cameraWidth = cameraHeight * mainCamera.aspect;
-
-        Vector2 mainCameraCenter = mainCamera.transform.position;
-
-        _bounds = new Rect(
-            mainCameraCenter.x - cameraWidth / 2.0f,
-            mainCameraCenter.y - cameraHeight / 2.0f,
-            cameraWidth,
-            cameraHeight);
     }
 
     private void CheckBounds()
