@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
     #region GameLoop
     private IEnumerator GameLoop()
     {
+        yield return null; //Wait for other scripts to subscribe to GameManager events.
+
         GameStart();
 
         while (HasLivesLeft())
