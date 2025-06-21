@@ -8,7 +8,7 @@ public static class AsteroidFactory
 
     public static void Init(List<AsteroidConfig> asteroidConfigs)
     {
-        if (_asteroidConfigurations == null || _asteroidConfigurations.Count == 0)
+        if (asteroidConfigs == null || asteroidConfigs.Count == 0)
             Debug.LogError($"{nameof(AsteroidFactory)} recived null or empty asteroid config list.");
 
         _asteroidConfigurations = asteroidConfigs;
