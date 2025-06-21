@@ -19,12 +19,6 @@ public class AsteroidManager : MonoBehaviour
         _rb.linearVelocity = GenerateRandomDirection() * _speed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag(Tags.LASER))
-            SplitAsteroid();
-    }
-
     public void Initialize(AsteroidConfig asteroidConfig)
     {
         _type = asteroidConfig.Type;
