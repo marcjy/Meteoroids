@@ -25,10 +25,7 @@ public class AsteroidManager : MonoBehaviour
         _speed = asteroidConfig.Speed;
         _nAsteroidsAfterSplit = asteroidConfig.NumberAsteroidsAfterSplit;
     }
-
-    private Vector2 GenerateRandomDirection() => Random.insideUnitCircle.normalized;
-
-    private void SplitAsteroid()
+    public void DestroyAsteroid()
     {
         AsteroidConfig.AsteroidType newAsteroidsType = AsteroidConfig.AsteroidType.Big;
 
@@ -42,6 +39,7 @@ public class AsteroidManager : MonoBehaviour
                 break;
             case AsteroidConfig.AsteroidType.Small:
                 //TODO: SCORE
+                Destroy(gameObject);
                 return;
         }
 
@@ -50,4 +48,7 @@ public class AsteroidManager : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    private Vector2 GenerateRandomDirection() => Random.insideUnitCircle.normalized;
+
 }
