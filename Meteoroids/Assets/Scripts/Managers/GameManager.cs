@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
 
         if (_player == null)
-            Debug.LogError($"Could not find the player GO with tag '{CustomTags.PLAYER}'");
+            Debug.LogError($"Could not find the player GO with tag '{Tags.PLAYER}'");
 
         _playerCollisionManager = _player.GetComponent<PlayerCollisionManager>();
 

@@ -21,9 +21,9 @@ public class AsteroidManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Missile"))
+        if (collision.gameObject.CompareTag(Tags.MISSILE))
             SplitAsteroid();
-        if (collision.gameObject.CompareTag("Asteroid"))
+        if (collision.gameObject.CompareTag(Tags.ASTEROID))
             Bounce();
     }
 

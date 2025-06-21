@@ -19,7 +19,11 @@ public class AsteroidGenerator : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
+
+        if (_player == null)
+            Debug.LogError($"Could not find the player GO with tag '{Tags.PLAYER}'");
+
         _screenBounds = ScreenBoundsData.GetScreenBounds();
 
         _spawnCoroutines = new List<Coroutine>();
