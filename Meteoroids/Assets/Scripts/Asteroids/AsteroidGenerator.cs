@@ -11,26 +11,52 @@ public class AsteroidGenerator : MonoBehaviour
     [SerializeField] private RandomRange _mediumAsteroidRandomSpawnRate;
     [SerializeField] private RandomRange _smallAsteroidRandomSpawnRate;
 
-    private GameObject _player;
+    private readonly List<Coroutine> _spawnCoroutines = new List<Coroutine>();
+
     private Rect _screenBounds;
+    private GameObject _player;
+    private bool _isWorking = false;
 
-    private List<Coroutine> _spawnCoroutines;
-    private bool _isWorking;
-
-    void Start()
+    private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
-
         if (_player == null)
             Debug.LogError($"Could not find the player GO with tag '{Tags.PLAYER}'");
 
         _screenBounds = ScreenBoundsData.GetScreenBounds();
-
-        _spawnCoroutines = new List<Coroutine>();
-        _isWorking = false;
     }
 
-    public void StartGenerator()
+    void Start()
+    {
+        SubscribeToGameManagerEvents();
+    }
+
+    private void OnDestroy()
+    {
+        UnsubscribeFromGameManagerEvents();
+    }
+
+    #region Event Subscription
+    private void SubscribeToGameManagerEvents()
+    {
+        GameManager.Instance.OnGameStart += HandleGameStart;
+        GameManager.Instance.OnGameEnd += HandleGameEnd;
+    }
+
+    private void UnsubscribeFromGameManagerEvents()
+    {
+        GameManager.Instance.OnGameStart -= HandleGameStart;
+        GameManager.Instance.OnGameEnd -= HandleGameEnd;
+    }
+    #endregion
+
+    #region Event Handling
+    private void HandleGameStart(object sender, System.EventArgs e) => TurnOn();
+    private void HandleGameEnd(object sender, System.EventArgs e) => TurnOff();
+
+    #endregion
+
+    private void TurnOn()
     {
         if (_isWorking)
         {
@@ -44,8 +70,7 @@ public class AsteroidGenerator : MonoBehaviour
         _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidConfig.AsteroidType.Medium, _mediumAsteroidRandomSpawnRate)));
         _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidConfig.AsteroidType.Small, _smallAsteroidRandomSpawnRate)));
     }
-
-    public void StopGenerator()
+    private void TurnOff()
     {
         foreach (Coroutine coroutine in _spawnCoroutines)
         {
@@ -56,6 +81,7 @@ public class AsteroidGenerator : MonoBehaviour
         _spawnCoroutines.Clear();
         _isWorking = false;
     }
+
     private Vector2 FindSafePositionForSpawning()
     {
         Vector2 playerPosition = _player.transform.position;
