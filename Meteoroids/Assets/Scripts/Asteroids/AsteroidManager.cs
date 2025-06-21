@@ -21,7 +21,7 @@ public class AsteroidManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(Tags.MISSILE))
+        if (collision.gameObject.CompareTag(Tags.LASER))
             SplitAsteroid();
     }
 
