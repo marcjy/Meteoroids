@@ -55,7 +55,7 @@ public class AsteroidManager : MonoBehaviour
         }
 
         for (int i = 0; i < _nAsteroidsAfterSplit; i++)
-            AsteroidFactory.Create(newAsteroidsType, transform.position, transform.rotation);
+            AsteroidFactory.Create(newAsteroidsType, transform.position);
 
         Destroy(gameObject);
     }
