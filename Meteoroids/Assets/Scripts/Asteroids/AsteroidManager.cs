@@ -23,8 +23,6 @@ public class AsteroidManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(Tags.MISSILE))
             SplitAsteroid();
-        if (collision.gameObject.CompareTag(Tags.ASTEROID))
-            Bounce();
     }
 
     public void Initialize(AsteroidConfig asteroidConfig)
@@ -35,7 +33,6 @@ public class AsteroidManager : MonoBehaviour
     }
 
     private Vector2 GenerateRandomDirection() => Random.insideUnitCircle.normalized;
-    private void Bounce() => _rb.linearVelocity *= -1;
 
     private void SplitAsteroid()
     {
