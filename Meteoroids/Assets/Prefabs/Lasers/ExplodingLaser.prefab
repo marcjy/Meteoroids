@@ -139,9 +139,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeTime: 5
   _speed: 4
+  _explosionRadius: 3
+  _explosionDuration: 1
   _asteroidLayer:
     serializedVersion: 2
     m_Bits: 64
-  _explosionRadius: 3
-  _explosionDuration: 1
   _blackHolePrefab: {fileID: 5143578022582908614, guid: 0ad2b8b6825d5ff4e99d97497133f4bc, type: 3}
+  _blackHoleCreated: {fileID: 8300000, guid: 4848c7202074c1e46945a875bef73354, type: 3}

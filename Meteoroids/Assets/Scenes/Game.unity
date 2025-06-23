@@ -560,9 +560,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec468db361ba594fae0cf7aa0750546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultLaser: 1
+  _defaultLaser: 2
   _normalLaser: {fileID: 7018889489058242823, guid: c85aa7e83075a5e4bb553b3aeb1a8202, type: 3}
   _piercingLaser: {fileID: 5918791081105355375, guid: 493fa2fcf4ba15c4bbcd6d937a7d6330, type: 3}
+  _explodingLaser: {fileID: 5350520688846338307, guid: a320cabd799f4a44986e79da83e9f06a, type: 3}
 --- !u!1 &563231386
 GameObject:
   m_ObjectHideFlags: 0
