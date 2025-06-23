@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnRoundEnd;
     public event EventHandler OnGameEnd;
 
-    [SerializeField] private int _maxPlayerLives;
+    [SerializeField] private int _maxPlayerLives = 3;
 
     private GameObject _player;
     private PlayerCollisionManager _playerCollisionManager;
