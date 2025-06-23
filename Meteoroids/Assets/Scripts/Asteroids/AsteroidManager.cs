@@ -4,7 +4,7 @@ public class AsteroidManager : MonoBehaviour
 {
     private Rigidbody2D _rb;
 
-    private AsteroidConfig.AsteroidType _type;
+    private AsteroidType _type;
     private float _speed;
     private float _nAsteroidsAfterSplit;
 
@@ -27,17 +27,17 @@ public class AsteroidManager : MonoBehaviour
     }
     public void DestroyAsteroid()
     {
-        AsteroidConfig.AsteroidType newAsteroidsType = AsteroidConfig.AsteroidType.Big;
+        AsteroidType newAsteroidsType = AsteroidType.Big;
 
         switch (_type)
         {
-            case AsteroidConfig.AsteroidType.Big:
-                newAsteroidsType = AsteroidConfig.AsteroidType.Medium;
+            case AsteroidType.Big:
+                newAsteroidsType = AsteroidType.Medium;
                 break;
-            case AsteroidConfig.AsteroidType.Medium:
-                newAsteroidsType = AsteroidConfig.AsteroidType.Small;
+            case AsteroidType.Medium:
+                newAsteroidsType = AsteroidType.Small;
                 break;
-            case AsteroidConfig.AsteroidType.Small:
+            case AsteroidType.Small:
                 //TODO: SCORE
                 Destroy(gameObject);
                 return;

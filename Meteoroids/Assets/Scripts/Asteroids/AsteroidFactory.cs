@@ -14,7 +14,7 @@ public static class AsteroidFactory
         _asteroidConfigurations = asteroidConfigs;
     }
 
-    public static AsteroidManager Create(AsteroidConfig.AsteroidType type, Vector2 position)
+    public static AsteroidManager Create(AsteroidType type, Vector2 position)
     {
         AsteroidConfig asteroidConfig = _asteroidConfigurations.FirstOrDefault(ac => ac.Type == type);
 

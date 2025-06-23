@@ -66,9 +66,9 @@ public class AsteroidGenerator : MonoBehaviour
 
         _isWorking = true;
 
-        _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidConfig.AsteroidType.Big, _bigAsteroidRandomSpawnRate)));
-        _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidConfig.AsteroidType.Medium, _mediumAsteroidRandomSpawnRate)));
-        _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidConfig.AsteroidType.Small, _smallAsteroidRandomSpawnRate)));
+        _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidType.Big, _bigAsteroidRandomSpawnRate)));
+        _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidType.Medium, _mediumAsteroidRandomSpawnRate)));
+        _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidType.Small, _smallAsteroidRandomSpawnRate)));
     }
     private void TurnOff()
     {
@@ -99,7 +99,7 @@ public class AsteroidGenerator : MonoBehaviour
         return spawnPosition;
     }
 
-    private IEnumerator SpawnAsteroid(AsteroidConfig.AsteroidType type, RandomRange spawnRateRange)
+    private IEnumerator SpawnAsteroid(AsteroidType type, RandomRange spawnRateRange)
     {
         while (true)
         {
