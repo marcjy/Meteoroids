@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 2
   Prefab: {fileID: 8882365695672458710, guid: 239949459bcb4da489930fdda1cd716f, type: 3}
-  Speed: 6
+  Speed: 2
   NumberAsteroidsAfterSplit: 0

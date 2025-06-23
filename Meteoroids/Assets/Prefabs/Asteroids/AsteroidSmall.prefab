@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1e335ea62301c854790674fe1600178e, type: 2}
+    - target: {fileID: 1320462436058565612, guid: f33468f8577e8c744bee1c8519f8794e, type: 3}
+      propertyPath: m_Radius
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 6230431245755006957, guid: f33468f8577e8c744bee1c8519f8794e, type: 3}
       propertyPath: m_Size.x
       value: 0.68
@@ -30,7 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7060164968834082155, guid: f33468f8577e8c744bee1c8519f8794e, type: 3}
       propertyPath: m_Name
-      value: AsteroidSmall 1
+      value: AsteroidSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449522073125148668, guid: f33468f8577e8c744bee1c8519f8794e, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8834315176922404203, guid: f33468f8577e8c744bee1c8519f8794e, type: 3}
       propertyPath: m_LocalPosition.x
