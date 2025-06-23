@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(ScreenWrapping))]
 public abstract class BaseLaser : MonoBehaviour
 {
-    [SerializeField] protected float _lifeTime;
-    [SerializeField] protected float _speed;
+    [SerializeField] protected float _lifeTime = 3.0f;
+    [SerializeField] protected float _speed = 8.0f;
 
     private Vector2 _direction;
 
