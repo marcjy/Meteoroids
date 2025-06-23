@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &21222640605645095
+--- !u!1001 &2523032147570750042
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Size.x
-      value: 0.45300728
+      value: 0.4263209
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Size.y
-      value: 1.7220304
+      value: 1.6279918
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Offset.x
-      value: -0.0065639317
+      value: 0.00848642
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Offset.y
-      value: -0.07220304
+      value: -0.001697123
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -34,19 +34,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 1.32
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 2.31
+      value: 1.165
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.66
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.155
+      value: 1.165
       objectReference: {fileID: 0}
     - target: {fileID: 628370282369480503, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3887710858411502386, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Name
-      value: PiercingLaser
+      value: ExplodingLaser
       objectReference: {fileID: 0}
     - target: {fileID: 5649965643045989820, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -98,16 +98,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6471453299884463433, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Size.x
-      value: 1.32
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 6471453299884463433, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Size.y
-      value: 2.31
+      value: 1.165
       objectReference: {fileID: 0}
     - target: {fileID: 6471453299884463433, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7c4d00d1e584fb44ea3fa14ff58c59c6, type: 3}
+      objectReference: {fileID: 21300000, guid: 84635cf49035ca841bb22408727d596b, type: 3}
     - target: {fileID: 6471453299884463433, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -118,24 +118,30 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3887710858411502386, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5918791081105355375}
+      addedObject: {fileID: 5350520688846338307}
   m_SourcePrefab: {fileID: 100100000, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
---- !u!1 &3870995116587295253 stripped
+--- !u!1 &1652944429231872360 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3887710858411502386, guid: 9446b59f0ab83fc42a1e67ade5e80d9e, type: 3}
-  m_PrefabInstance: {fileID: 21222640605645095}
+  m_PrefabInstance: {fileID: 2523032147570750042}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5918791081105355375
+--- !u!114 &5350520688846338307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3870995116587295253}
+  m_GameObject: {fileID: 1652944429231872360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c52767e526876ed438caa83a9c913711, type: 3}
+  m_Script: {fileID: 11500000, guid: 72c609a0cec9cbb44b78da35685229a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 3
-  _speed: 8
+  _lifeTime: 5
+  _speed: 4
+  _asteroidLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _explosionRadius: 3
+  _explosionDuration: 1
+  _blackHolePrefab: {fileID: 5143578022582908614, guid: 0ad2b8b6825d5ff4e99d97497133f4bc, type: 3}
