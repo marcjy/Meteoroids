@@ -48,6 +48,7 @@ public class AsteroidManager : MonoBehaviour
 
         Destroy(gameObject);
     }
+    public void DestroyAsteroid() => Destroy(gameObject);
 
     private Vector2 GenerateRandomDirection() => Random.insideUnitCircle.normalized;
 
