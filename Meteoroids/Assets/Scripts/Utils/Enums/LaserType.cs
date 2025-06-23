@@ -1,5 +1,6 @@
 public enum LaserType
 {
     Normal,
-    Piercing
+    Piercing,
+    Exploding
 }

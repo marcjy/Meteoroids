@@ -6,6 +6,7 @@ public class PlayerGunController : MonoBehaviour
     [SerializeField] private LaserType _defaultLaser;
     [SerializeField] private NormalLaser _normalLaser;
     [SerializeField] private PiercingLaser _piercingLaser;
+    [SerializeField] private ExplodingLaser _explodingLaser;
 
     private BaseLaser _currentLaserType;
 
@@ -57,6 +58,7 @@ public class PlayerGunController : MonoBehaviour
         {
             LaserType.Normal => _normalLaser,
             LaserType.Piercing => _piercingLaser,
+            LaserType.Exploding => _explodingLaser,
             _ => _normalLaser
         };
     }
