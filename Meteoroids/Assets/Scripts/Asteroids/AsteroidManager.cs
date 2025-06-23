@@ -25,7 +25,7 @@ public class AsteroidManager : MonoBehaviour
         _speed = asteroidConfig.Speed;
         _nAsteroidsAfterSplit = asteroidConfig.NumberAsteroidsAfterSplit;
     }
-    public void DestroyAsteroid()
+    public void SplitAsteroid()
     {
         AsteroidType newAsteroidsType = AsteroidType.Big;
 
