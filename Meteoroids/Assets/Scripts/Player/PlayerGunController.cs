@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class PlayerGunController : MonoBehaviour
 {
+    [Header("Lasers")]
+    [SerializeField] private LaserType _defaultLaser;
     [SerializeField] private NormalLaser _normalLaser;
+    [SerializeField] private PiercingLaser _piercingLaser;
 
     private BaseLaser _currentLaserType;
 
     private void Awake()
     {
-        _currentLaserType = _normalLaser;
+        _currentLaserType = GetLaser(_defaultLaser);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,5 +49,15 @@ public class PlayerGunController : MonoBehaviour
     private void Shoot()
     {
         BaseLaser laser = Instantiate(_currentLaserType, transform.position, transform.rotation);
+    }
+
+    private BaseLaser GetLaser(LaserType type)
+    {
+        return type switch
+        {
+            LaserType.Normal => _normalLaser,
+            LaserType.Piercing => _piercingLaser,
+            _ => _normalLaser
+        };
     }
 }
