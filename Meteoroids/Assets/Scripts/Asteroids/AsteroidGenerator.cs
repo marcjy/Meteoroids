@@ -69,6 +69,10 @@ public class AsteroidGenerator : MonoBehaviour
         _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidType.Big, _bigAsteroidRandomSpawnRate)));
         _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidType.Medium, _mediumAsteroidRandomSpawnRate)));
         _spawnCoroutines.Add(StartCoroutine(SpawnAsteroid(AsteroidType.Small, _smallAsteroidRandomSpawnRate)));
+
+#if UNITY_EDITOR
+        Debug.Log($"Activating {nameof(AsteroidGenerator)}");
+#endif
     }
     private void TurnOff()
     {
@@ -80,6 +84,10 @@ public class AsteroidGenerator : MonoBehaviour
 
         _spawnCoroutines.Clear();
         _isWorking = false;
+
+#if UNITY_EDITOR
+        Debug.Log($"Deactivating {nameof(AsteroidGenerator)}");
+#endif
     }
 
     private Vector2 FindSafePositionForSpawning()
