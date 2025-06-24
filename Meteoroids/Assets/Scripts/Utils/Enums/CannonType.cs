@@ -1,5 +1,6 @@
 public enum CannonType
 {
     Normal,
-    Multishot
+    Multishot,
+    Beam
 }
