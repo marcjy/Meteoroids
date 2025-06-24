@@ -1,6 +1,7 @@
+using System.Linq;
 using UnityEngine;
 
-public class PlayerGunController : MonoBehaviour
+public class PlayerCannonController : MonoBehaviour
 {
     [Header("Lasers")]
     [SerializeField] private LaserType _defaultLaser;
@@ -9,10 +10,21 @@ public class PlayerGunController : MonoBehaviour
     [SerializeField] private ExplodingLaser _explodingLaser;
     [SerializeField] private SplittingLaser _splittingLaser;
 
+    [Header("Cannon")]
+    [SerializeField] private Transform _laserSpawn;
+    [SerializeField] private CannonType _defaultCannon;
+    [SerializeField] private BaseCannon[] _cannonTypes;
+
+    private NormalCannon _normalCannon;
+    private MultishotCannon _multishotCannon;
+
+    private BaseCannon _currentCannon;
     private BaseLaser _currentLaserType;
+
 
     private void Awake()
     {
+        _currentCannon = GetCannon(_defaultCannon);
         _currentLaserType = GetLaser(_defaultLaser);
     }
 
@@ -20,12 +32,6 @@ public class PlayerGunController : MonoBehaviour
     void Start()
     {
         SubscribeToInputManagerEvents();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void OnDestroy()
@@ -50,7 +56,7 @@ public class PlayerGunController : MonoBehaviour
 
     private void Shoot()
     {
-        BaseLaser laser = Instantiate(_currentLaserType, transform.position, transform.rotation);
+        _currentCannon.Shoot(_currentLaserType, _laserSpawn);
     }
 
     private BaseLaser GetLaser(LaserType type)
@@ -63,5 +69,15 @@ public class PlayerGunController : MonoBehaviour
             LaserType.Splitting => _splittingLaser,
             _ => _normalLaser
         };
+    }
+
+    private BaseCannon GetCannon(CannonType type)
+    {
+        BaseCannon cannon = _cannonTypes.FirstOrDefault(c => c.Type == type);
+
+        if (cannon == null)
+            Debug.LogError($"Cannon type '{type} not found in array '{_cannonTypes}'");
+
+        return cannon;
     }
 }
