@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class PlayerCannonController : MonoBehaviour
     private BaseCannon _currentCannon;
     private BaseLaser _currentLaserType;
 
+    private bool _canFire = true;
 
     private void Awake()
     {
@@ -56,7 +58,17 @@ public class PlayerCannonController : MonoBehaviour
 
     private void Shoot()
     {
-        _currentCannon.Shoot(_currentLaserType, _laserSpawn);
+        if (!_canFire) return;
+
+        if (_currentCannon.AttackType == CannonAttackType.Proyectile)
+            _currentCannon.Shoot(_currentLaserType, _laserSpawn);
+        else
+        {
+            _currentCannon.CreateBeam(_laserSpawn);
+
+            float cannonDowntime = (_currentCannon as BeamCannon).GetBeamDuration();
+            StartCoroutine(DisableCannon(cannonDowntime));
+        }
     }
 
     private BaseLaser GetLaser(LaserType type)
@@ -70,7 +82,6 @@ public class PlayerCannonController : MonoBehaviour
             _ => _normalLaser
         };
     }
-
     private BaseCannon GetCannon(CannonType type)
     {
         BaseCannon cannon = _cannonTypes.FirstOrDefault(c => c.Type == type);
@@ -79,5 +90,14 @@ public class PlayerCannonController : MonoBehaviour
             Debug.LogError($"Cannon type '{type} not found in array '{_cannonTypes}'");
 
         return cannon;
+    }
+
+    private IEnumerator DisableCannon(float duration)
+    {
+        _canFire = false;
+
+        yield return new WaitForSeconds(duration);
+
+        _canFire = true;
     }
 }
